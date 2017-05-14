@@ -1,10 +1,18 @@
-var express = require('express');
-var path = require('path');
-var open = require('open');
+import express from 'express';
+import path from 'path';
+import open from 'open';
+import webpack from 'webpack';
+import config from '../webpack.config.dev';
 
-var port = 3000;
-var app = express();
-var _dirname = 'C:/GitHub/9.TRAINING/9.TRAINING/JavaScriptDevelopmentEnvironment/JDE/JSDevEnvironment';
+const port = 3000;
+const app = express();
+const _dirname = 'C:/GitHub/9.TRAINING/9.TRAINING/JavaScriptDevelopmentEnvironment/JDE/JSDevEnvironment';
+const compiler = webpack(config);
+
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: config.output.publicPath
+}));
 
 app.get('/', function(req, res) {
   res.sendFile(path.join(_dirname, '/src/index.html'));
