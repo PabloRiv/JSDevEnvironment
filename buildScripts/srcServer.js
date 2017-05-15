@@ -4,6 +4,8 @@ import open from 'open';
 import webpack from 'webpack';
 import config from '../webpack.config.dev';
 
+/* eslint-disable no-console */
+
 const port = 3000;
 const app = express();
 const _dirname = 'C:/GitHub/9.TRAINING/9.TRAINING/JavaScriptDevelopmentEnvironment/JDE/JSDevEnvironment';
